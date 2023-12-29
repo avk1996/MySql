@@ -1,6 +1,5 @@
-    DELIMITER &&
-    --if the procedure exists with the same name then we will get error so we use the following to avoid 
     DROP PROCEDURE IF EXISTS sp_hello;
+    DELIMITER &&
     
     CREATE PROCEDURE sp_hello()
     BEGIN

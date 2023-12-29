@@ -42,5 +42,6 @@ DELIMITER ;
     DELIMITER ;
 
 -- step3: run .sql file using src command
+-- e.g. SOURCE path/to/mysql/sp.sql
 
 -- step4: execute the sp on prompt: CALL sp_hello();
