@@ -12,7 +12,7 @@ DETERMINISTIC
 
 BEGIN 
     DECLARE sq INT;
-    SET sq = num * num;
+    SET sq = num * num; 
     RETURN sq;
 END;
 
