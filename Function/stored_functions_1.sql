@@ -30,3 +30,27 @@ DELIMTER ;
 -- only for procedure use CALL, NOT FOR FUNCTIONs
 
 -- To run function one must set -> SET GLOBAL log_bin_trust_function_creators = 1;
+
+
+-- non-deterministic returns
+
+-- return difference between given data and current date in years
+
+DROP FUNCTION IF EXISTS date_diff_yrs;
+
+DELIMITER &&
+
+CREATE FUNCTION date_diff_yrs(in_date DATE);
+
+RETURNS INT
+DETERMINISTIC
+
+BEGIN
+    DECLARE diff_yrs INT
+    SELECT TIMESTAMPDIFF(NOW(),in_date) INTO diff_yrs FROM DUAL;
+    RETURN ABS(diff_yrs);
+END;
+
+&&
+
+DELIMITER ;

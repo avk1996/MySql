@@ -1,0 +1,19 @@
+
+DROP FUNCTION IF EXISTS date_diff_yrs;
+
+DELIMITER &&
+
+CREATE FUNCTION date_diff_yrs(in_date DATE)
+
+RETURNS INT
+NOT DETERMINISTIC
+
+BEGIN
+    DECLARE diff_yrs INT;
+    SELECT TIMESTAMPDIFF(YEAR,NOW(),in_date) INTO diff_yrs FROM DUAL;
+    RETURN ABS(diff_yrs);
+END;
+
+&&
+
+DELIMITER ;
