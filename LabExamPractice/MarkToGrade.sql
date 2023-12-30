@@ -11,9 +11,9 @@
   DECLARE grade VARCHAR(4);
   IF Mark >= 80 THEN
     RETURN 'A'
-  ELSEIF Mark >= 65 AND Mark < 80 THEN
+  ELSE IF Mark >= 65 AND Mark < 80 THEN
     RETURN 'B'
-  ELSEIF Mark >= 50 AND Mark < 65 THEN
+  ELSE IF Mark >= 50 AND Mark < 65 THEN
     RETURN 'C'
   ELSE 
     RETURN 'FAIL' 
