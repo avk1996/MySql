@@ -10,13 +10,15 @@
  BEGIN
   DECLARE grade VARCHAR(4);
   IF Mark >= 80 THEN
-    RETURN 'A'
-  ELSE IF Mark >= 65 AND Mark < 80 THEN
-    RETURN 'B'
-  ELSE IF Mark >= 50 AND Mark < 65 THEN
-    RETURN 'C'
+    SET grade = 'A';
+  ELSEIF Mark >= 65 AND Mark < 80 THEN
+    SET grade ='B';
+  ELSEIF Mark >= 50 AND Mark < 65 THEN
+    SET grade ='C';
   ELSE 
-    RETURN 'FAIL' 
+    SET grade ='FAIL';
+  END IF;
+  RETURN grade; 
  END;
  &&
 
