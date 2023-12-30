@@ -1,0 +1,23 @@
+ DROP FUNCTION IF EXISTS MarkToGrade;
+
+ DELIMITER &&
+ 
+ CREATE FUNCTION MarkToGrade(mark INT)
+ 
+ RETURNS VARCHAR(4)
+ DETERMINISTIC
+
+ BEGIN
+  DECLARE grade VARCHAR(4);
+  IF Mark >= 80 THEN
+    RETURN 'A'
+  ELSEIF Mark >= 65 AND Mark < 80 THEN
+    RETURN 'B'
+  ELSEIF Mark >= 50 AND Mark < 65 THEN
+    RETURN 'C'
+  ELSE 
+    RETURN 'FAIL' 
+ END;
+ &&
+
+ DELIMITER ;
