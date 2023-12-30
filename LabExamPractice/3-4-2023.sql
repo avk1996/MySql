@@ -126,6 +126,8 @@ HAVING DEPARTMENT = (SELECT DEPARTMENT FROM worker WHERE WORKER_ID=1)
 -- WORKER NAMES               5 MARKS 
 --    eg. Monika , Vishal , Satish , Vipul ......  
 
+CREATE TABLE result (comma_seperated_values VARCHAR(200));
+
 DROP PROCEDURE IF EXISTS Worker_List;
 
 DELIMITER &&
@@ -140,11 +142,17 @@ BEGIN
 
   DECLARE CONTINUE HANDLER FOR NOT FOUND SET v_flag = 1;
 
-  OPEN v_cur
-  v_cur = "";
+  OPEN v_cur;
+  v_name_str = "";
   read_names : LOOP
-    v_name_str = CONCAT()
-    FETCH v_cur INTO CONCAT(FIRST_NAME)
+
+    v_name_str = CONCAT(FIRST_NAME,",")
+    IF v_flag = 1 THEN 
+      FETCH v_cur INTO v_name_str;
+      LEAVE read_names;
+    END IF
+  END LOOP;
+  INSERT INTO result VALUES(v_name_str);
   END v_cur;
 END;
 
