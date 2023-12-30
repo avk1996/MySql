@@ -1,0 +1,155 @@
+CREATE TABLE Worker (
+    WORKER_ID INT PRIMARY KEY,
+    FIRST_NAME VARCHAR(50),
+    LAST_NAME VARCHAR(50),
+    SALARY DECIMAL(10, 2),
+    JOINING_DATE DATETIME,
+    DEPARTMENT VARCHAR(50)
+);
+
+INSERT INTO Worker (WORKER_ID, FIRST_NAME, LAST_NAME, SALARY, JOINING_DATE, DEPARTMENT)
+VALUES
+    (1, 'Monika', 'Arora', 100000.00, '2014-02-20 09:00:00', 'HR'),
+    (2, 'Niharik', 'Verma', 80000.00, '2014-06-11 09:00:00', 'Admin'),
+    (3, 'Vishal', 'Singhal', 300000.00, '2014-02-20 09:00:00', 'HR'),
+    (4, 'Amitabh', 'Singh', 500000.00, '2014-02-20 09:00:00', 'Admin'),
+    (5, 'Vivek', 'Bhati', 500000.00, '2014-06-11 09:00:00', 'Admin'),
+    (6, 'Vipul', 'Diwan', 200000.00, '2014-06-11 09:00:00', 'Account'),
+    (7, 'Satish', 'Kumar', 75000.00, '2014-01-20 09:00:00', 'Account'),
+    (8, 'Geetika', 'Chauhan', 90000.00, '2014-04-11 09:00:00', 'Admin');
+
+2)
+
+CREATE TABLE Title (
+    WORKER_REF_ID INT,
+    WORKER_TITLE VARCHAR(50),
+    AFFECTED_FROM DATETIME
+);
+
+INSERT INTO Title (WORKER_REF_ID, WORKER_TITLE, AFFECTED_FROM)
+VALUES
+    (1, 'Manager', '2016-02-20 00:00:00'),
+    (2, 'Executive', '2016-06-11 00:00:00'),
+    (8, 'Executive', '2016-06-11 00:00:00'),
+    (5, 'Manager', '2016-06-11 00:00:00'),
+    (4, 'Asst. Manager', '2016-06-11 00:00:00'),
+    (7, 'Executive', '2016-06-11 00:00:00'),
+    (6, 'Lead', '2016-06-11 00:00:00'),
+    (3, 'Lead', '2016-06-11 00:00:00');
+
+3)
+CREATE TABLE Bonus (
+    WORKER_REF_ID INT,
+    BONUS_DATE DATETIME,
+    BONUS_AMOUNT DECIMAL(10, 2)
+);
+
+INSERT INTO Bonus (WORKER_REF_ID, BONUS_DATE, BONUS_AMOUNT)
+VALUES
+    (1, '2016-02-20 00:00:00', 5000.00),
+    (2, '2016-06-11 00:00:00', 3000.00),
+    (3, '2016-02-20 00:00:00', 4000.00),
+    (1, '2016-02-20 00:00:00', 4500.00),
+    (2, '2016-06-11 00:00:00', 3500.00);
+4)
+CREATE TABLE Employee (
+    Empid INT PRIMARY KEY,
+    EmpName VARCHAR(50),
+    Department VARCHAR(50),
+    ContactNo VARCHAR(15),
+    EmailId VARCHAR(100),
+    EmpHeadId INT
+);
+
+INSERT INTO Employee (Empid, EmpName, Department, ContactNo, EmailId, EmpHeadId)
+VALUES
+    (101, 'Isha', 'E-101', '1234567890', 'isha@gmail.com', 105),
+    (102, 'Priya', 'E-104', '1234567890', 'priya@yahoo.com', 103),
+    (103, 'Neha', 'E-101', '1234567890', 'neha@gmail.com', 101),
+    (104, 'Rahul', 'E-102', '1234567890', 'rahul@yahoo.com', 105),
+    (105, 'Abhishek', 'E-101', '1234567890', 'abhishek@gmail.com', 102);
+5)
+CREATE TABLE EmpDept (
+    DeptId VARCHAR(10) PRIMARY KEY,
+    DeptName VARCHAR(50),
+    Dept_off VARCHAR(50),
+    DeptHead INT
+);
+
+INSERT INTO EmpDept (DeptId, DeptName, Dept_off, DeptHead)
+VALUES
+    ('E-101', 'HR', 'Monday', 105),
+    ('E-102', 'Development', 'Tuesday', 101),
+    ('E-103', 'House Keeping', 'Saturday', 103),
+    ('E-104', 'Sales', 'Sunday', 104),
+    ('E-105', 'Purchase', 'Tuesday', 104);
+6)
+CREATE TABLE EmpSalary (
+    EmpId INT PRIMARY KEY,
+    Salary DECIMAL(10, 2),
+    IsPermanent VARCHAR(3)
+);
+
+INSERT INTO EmpSalary (EmpId, Salary, IsPermanent)
+VALUES
+    (101, 2000.00, 'Yes'),
+    (102, 10000.00, 'Yes'),
+    (103, 5000.00, 'No'),
+    (104, 1900.00, 'Yes'),
+    (105, 2300.00, 'Yes');
+7)
+CREATE TABLE Project (
+    ProjectId VARCHAR(10) PRIMARY KEY,
+    Duration INT
+);
+
+INSERT INTO Project (ProjectId, Duration)
+VALUES
+    ('p-1', 23),
+    ('p-2', 15),
+    ('p-3', 45),
+    ('p-4', 2),
+    ('p-5', 30);
+8)
+CREATE TABLE Country (
+    cid VARCHAR(10) PRIMARY KEY,
+    cname VARCHAR(50)
+);
+
+INSERT INTO Country (cid, cname)
+VALUES
+    ('c-1', 'India'),
+    ('c-2', 'USA'),
+    ('c-3', 'China'),
+    ('c-4', 'Pakistan'),
+    ('c-5', 'Russia');
+9)
+CREATE TABLE ClientTable (
+    ClientId VARCHAR(10) PRIMARY KEY,
+    ClientName VARCHAR(50),
+    cid VARCHAR(10)
+);
+
+INSERT INTO ClientTable (ClientId, ClientName, cid)
+VALUES
+    ('cl-1', 'ABC Group', 'c-1'),
+    ('cl-2', 'PQR', 'c-1'),
+    ('cl-3', 'XYZ', 'c-2'),
+    ('cl-4', 'tech altum', 'c-3'),
+    ('cl-5', 'mnp', 'c-5');
+10)
+CREATE TABLE EmpProject (
+    EmpId INT,
+    ProjectId VARCHAR(10),
+    ClientID VARCHAR(10),
+    StartYear INT,
+    EndYear INT
+);
+
+INSERT INTO EmpProject (EmpId, ProjectId, ClientID, StartYear, EndYear)
+VALUES
+    (101, 'p-1', 'cl-1', 2010, 2010),
+    (102, 'p-2', 'cl-2', 2010, 2012),
+    (103, 'p-1', 'cl-3', 2013, NULL),
+    (104, 'p-4', 'cl-1', 2014, 2015),
+    (105, 'p-4', 'cl-5', 2015, NULL);
