@@ -14,17 +14,6 @@
 -- HAVING MARK GREATER THAN THE MARK OF EMILE ZOLA IN THE DATABASES MODULE USING 
 -- JOINS. 
 
-SELECT CONCAT(s.Forename," ",s.Surname) AS STUDENT_NAME, m.Module_Name, SUM(m.Mark) 
-FROM Students s INNER JOIN marks m 
-ON s.Student_No = m.Student_No
-GROUP BY s.Student_No
-HAVING m.Mark >
-
-SELECT s.Student_No, SUM(m.Mark) AS Total_marks 
-FROM Students s INNER JOIN marks m
-ON s.Student_No = m.Student_No 
-GROUP BY s.Student_No 
-HAVING (SELECT CONCAT(Forename," ",Surname) FROM students WHERE Forename = "Emile" AND Surname = "Zola");
 
 -- 3. CREATE A FOREIGN KEY CONSTRAINT ON THE ‘STUDENT_NO’ COLUMN OF THE MARKS TABLE 
 -- ASSUMING ‘STUDENT_NO’ IS THE PRIMARY KEY OF THE STUDENT TABLE. 
@@ -46,10 +35,17 @@ HAVING (SELECT CONCAT(Forename," ",Surname) FROM students WHERE Forename = "Emil
  
 -- Q2. IMPORT THE EMP.CSV FILE AND SOLVE THE FOLLOWING QUERIES USING MONGODB –                        
 --         [15 MARKS] 
- 
+
+-- go to 13-09-2022-table.mongodb
+
 -- 1. DISPLAY EMPLOYEE NAME WHOSE SALARY(SAL) GREATER THAN 2000. 
 
+db.EMP.find({SAL: {$gt:2000}});
  
 -- 2. INSERT A RECORD IN THE EMP COLLECTION. (ASSUME EMPLOYEE DETAILS)  
- 
+
+db.EMP.insertOne({ EMP_ID: 7, EMP_NAME: "Rakesh Roshan", SAL: 6800.0, DEPT_ID: 105 })
+
 -- 3. DELETE THE RECORD OF THE EMPLOYEE WHOSE NAME IS FORD.
+
+db.EMP.deleteOne({ EMP_NAME: 'Michael Ford'});

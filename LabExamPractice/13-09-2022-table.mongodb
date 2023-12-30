@@ -1,0 +1,9 @@
+// Insert sample data into EMP table
+db.EMP.insertMany([
+  { EMP_ID: 1, EMP_NAME: "John Doe", SAL: 2500.0, DEPT_ID: 101 },
+  { EMP_ID: 2, EMP_NAME: "Jane Smith", SAL: 3000.0, DEPT_ID: 102 },
+  { EMP_ID: 3, EMP_NAME: "Michael Ford", SAL: 1800.0, DEPT_ID: 103 },
+  { EMP_ID: 4, EMP_NAME: "Alice Johnson", SAL: 2200.0, DEPT_ID: 101 },
+  { EMP_ID: 5, EMP_NAME: "Robert Williams", SAL: 2800.0, DEPT_ID: 102 }]);
+
+//keep ]); up
