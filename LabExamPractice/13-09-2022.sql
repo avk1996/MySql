@@ -38,32 +38,11 @@ HAVING (SELECT CONCAT(Forename," ",Surname) FROM students WHERE Forename = "Emil
 -- ELSE GRADE IS C IF MARK IS IN RANGE 50 TO 64 
 -- OTHERWISE, FAIL IF MARK < 50. 
 
- DROP FUNCTION IF EXISTS MarkToGrade;
+-- go to MarkToGrade.sql
 
- DELIMITER &&
- 
- CREATE FUNCTION MarkToGrade(mark INT)
-
- BEGIN
-  DECLARE grade VARCHAR(4);
-  SELECT *, 
-  CASE
-    WHEN Mark >= 80 THEN "A"
-    WHEN Mark >=65 AND Mark < 80 THEN "B"
-    WHEN Mark >=50 AND Mark < 65 THEN "C"
-    ELSE "FAIL"
-  END
-  INTO grade, 
-  FROM marks;
- END;
-
- &&
-
- DELIMITER ;
 -- 5. WRITE A STORED PROCEDURE TO DISPLAY ALL THE TABLES WHOSE NAME STARTS WITH M. 
- 
- 
- 
+
+-- go to StartWithM.sql
  
 -- Q2. IMPORT THE EMP.CSV FILE AND SOLVE THE FOLLOWING QUERIES USING MONGODB –                        
 --         [15 MARKS] 
