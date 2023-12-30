@@ -164,7 +164,7 @@ db.mycol.find({"comments.user":"user1"})
 
  CREATE FUNCTION SalSum(id INT)
 
- RETURNS INT 
+   RETURNS INT 
  NOT DETERMINISTIC
 
  BEGIN
@@ -187,6 +187,32 @@ HAVING DEPARTMENT = (SELECT DEPARTMENT FROM worker WHERE WORKER_ID=1)
 -- 4 CREATE A CURSOR IN MYSQL, BY USING THE CURSOR RETURN THE COMMA SEPRATED LIST OF 
 -- WORKER NAMES               5 MARKS 
 --    eg. Monika , Vishal , Satish , Vipul ......  
+
+DROP PROCEDURE IF EXISTS Worker_List;
+
+DELIMITER &&
+
+CREATE PROCEDURE Worker_List()
+
+BEGIN
+  -- first set up error handler flag
+  DECLARE v_flag INT DEFAULT 0;
+  DECLARE v_name_str VARCHAR(100);
+  DECLARE v_cur CURSOR FOR SELECT FIRST_NAME FROM worker;
+
+  DECLARE CONTINUE HANDLER FOR NOT FOUND SET v_flag = 1;
+
+  OPEN v_cur
+  v_cur = "";
+  read_names : LOOP
+    v_name_str = CONCAT()
+    FETCH v_cur INTO CONCAT(FIRST_NAME)
+  END v_cur;
+END;
+
+&&
+
+DELIMITER ;
  
 -- 5 CREATE A AFTER INSERT TRIGGER IN MYSQL     ..        5 MARKS  
 --   CREATE AN EMP_DETAILS TABLES AS FOLLOWS  

@@ -10,7 +10,7 @@ BEGIN
     DECLARE v_flag INT DEFAULT 0;
     DECLARE v_deptno INT;
     DECLARE v_dname CHAR(30);
-    DECLARE v_loc CHAR (30);
+    DECLARE v_loc CHAR(30);
     DECLARE v_cur CURSOR FOR SELECT deptno, dname, loc FROM dept;
 
     DECLARE CONTINUE HANDLER FOR NOT FOUND SET v_flag = 1;
