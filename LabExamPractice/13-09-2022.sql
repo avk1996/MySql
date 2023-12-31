@@ -16,10 +16,9 @@
 
 SELECT CONCAT(s.Forename,s.Surname) AS FULL_NAME ,m.Module_Name,m.Mark 
 FROM students s INNER JOIN marks m
-ON s.Student_No = m.Student_No
-WHERE  CONCAT(s.Forename,s.Surname)='EmileZola' 
+ON s.Student_No = m.Student_No 
 GROUP BY m.Student_No
-HAVING SUM(m.Mark)>(SELECT SUM(m.Mark ) FROM marks m INNER JOIN students ON s.Student_No=m.Student_No);
+HAVING SUM(m.Mark)>( SELECT SUM(m.Mark) FROM marks m INNER JOIN students s ON s.Student_No=m.Student_No WHERE CONCAT(s.Forename,s.Surname)='EmileZola' GROUP BY m.Student_No );
 
 --CHAT GPT
 

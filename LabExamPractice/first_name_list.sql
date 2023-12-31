@@ -26,9 +26,7 @@ DECLARE CONTINUE HANDLER FOR NOT FOUND SET v_flag=1;
         LEAVE label;
       END IF;
 
-    SET @worker_list = CONCAT(@worker_list,v_name_worker,',');
-    -- SELECT v_name_worker; 
-    
+    SET @worker_list = CONCAT(@worker_list,v_name_worker,', ');    
     END LOOP;
   
   CLOSE v_cur;
