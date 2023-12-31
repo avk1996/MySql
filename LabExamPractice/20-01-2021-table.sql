@@ -184,6 +184,12 @@ INSERT INTO `employees` (`EMPLOYEE_ID`, `FIRST_NAME`, `LAST_NAME`, `EMAIL`, `PHO
 ('205', 'Shelley', 'Higgins', 'SHIGGINS', '515.123.8080', '1987-09-30', 'AC_MGR', '12000.00', '0.00', '101', '110'),
 ('206', 'William', 'Gietz', 'WGIETZ', '515.123.8181', '1987-10-01', 'AC_ACCOUNT', '8300.00', '0.00', '205', '110');
 
+INSERT INTO `employees` (`EMPLOYEE_ID`, `FIRST_NAME`, `LAST_NAME`, `EMAIL`, `PHONE_NUMBER`, `HIRE_DATE`, `JOB_ID`, `SALARY`, `COMMISSION_PCT`, `MANAGER_ID`, `DEPARTMENT_ID`) VALUES
+('301', 'Steven', 'King', 'SKING1', '515.123.4567', '1999-06-17', 'AD_PRES', '24000.00', '0.00', '0', '90'),
+('302', 'Steven', 'King', 'SKING2', '515.123.4567', '1999-06-17', 'AD_PRES', '24000.00', '0.00', '0', '90'),
+('303', 'Steven', 'King', 'SKING3', '515.123.4567', '1999-06-17', 'AD_PRES', '24000.00', '0.00', '0', '90'),
+('304', 'Steven', 'King', 'SKING4', '515.123.4567', '2000-06-17', 'AD_PRES', '24000.00', '0.00', '0', '90'),
+('305', 'Steven', 'King', 'SKING5', '515.123.4567', '2000-06-17', 'AD_PRES', '24000.00', '0.00', '0', '90');
 -- --------------------------------------------------------
 
 --

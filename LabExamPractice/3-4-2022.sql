@@ -159,6 +159,7 @@ BEGIN
       LEAVE read_names;
     END IF
   END LOOP;
+  CLOSE v_cur;
   INSERT INTO result VALUES(v_name_str);
   END v_cur;
 END;
