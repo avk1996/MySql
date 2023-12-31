@@ -4,8 +4,10 @@ CREATE PROCEDURE get_worker_names()
 BEGIN
   DECLARE worker_name VARCHAR(255);
   DECLARE finished INT DEFAULT 0;
+  DECLARE temp VARCHAR(255);
   DECLARE worker_cursor CURSOR FOR SELECT FIRST_NAME FROM worker;  -- Replace "workers" with your actual table name
   DECLARE CONTINUE HANDLER FOR NOT FOUND SET finished = 1;
+
 
   OPEN worker_cursor;
 
@@ -22,8 +24,9 @@ BEGIN
 
   CLOSE worker_cursor;
 
-  SELECT TRIM(TRAILING ', ' FROM @worker_name_list);  -- Remove trailing comma and space
-  INSERT INTO result VALUES(worker_name_list);
+  SET temp =  TRIM(TRAILING ', ' FROM @worker_name_list);  -- Remove trailing comma and space
+  SELECT temp;
+  INSERT INTO result VALUES(temp);
 END;
 &&
 DELIMITER ;

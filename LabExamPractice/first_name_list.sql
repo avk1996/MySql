@@ -9,14 +9,14 @@ BEGIN
 DECLARE v_flag INT DEFAULT 0;
 DECLARE v_name_worker VARCHAR(255) DEFAULT "";
 DECLARE worker_list VARCHAR(255);
-DECLARE temp VARCHAR(30);
+DECLARE temp VARCHAR(255);
 DECLARE v_cur CURSOR FOR SELECT FIRST_NAME FROM worker;
 
 DECLARE CONTINUE HANDLER FOR NOT FOUND SET v_flag=1;
 
   OPEN v_cur;
 
-  SET @worker_list = NULL;  
+  SET @worker_list = "";  
     
     label:LOOP
   
@@ -26,15 +26,15 @@ DECLARE CONTINUE HANDLER FOR NOT FOUND SET v_flag=1;
         LEAVE label;
       END IF;
 
-    SET @temp = v_name_worker;
-    SET @worker_list = CONCAT(temp,',');
+    SET @worker_list = CONCAT(@worker_list,v_name_worker,',');
     -- SELECT v_name_worker; 
     
     END LOOP;
   
   CLOSE v_cur;
-  INSERT INTO result VALUES(worker_list);
-  -- SET v_name_worker = TRIM(TRAILING ', ' FROM v_name_worker);
+  SET temp = TRIM(TRAILING ', ' FROM @worker_list);
+  SELECT temp;
+  INSERT INTO result VALUES(temp);
 END;
 
 $$
