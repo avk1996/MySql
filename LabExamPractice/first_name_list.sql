@@ -30,8 +30,10 @@ DECLARE CONTINUE HANDLER FOR NOT FOUND SET v_flag=1;
     END LOOP;
   
   CLOSE v_cur;
+
   SET temp = TRIM(TRAILING ', ' FROM @worker_list);
   SELECT temp;
+  
   INSERT INTO result VALUES(temp);
 END;
 
