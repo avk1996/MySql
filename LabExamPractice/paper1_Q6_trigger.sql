@@ -14,7 +14,7 @@ BEFORE INSERT ON emp
 
 FOR EACH ROW
 BEGIN
-    INSERT INTO SalLog VALUES(NEW.sal,OLD.sal,ABS(NEW.sal-OLD.sal));
+    INSERT INTO SalLog VALUES(NEW.sal,NEW.sal,ABS(NEW.sal-NEW.sal));
 END;
 
 &&
