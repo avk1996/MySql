@@ -1,0 +1,22 @@
+use sample_db;
+
+db.my_col.insertOne({title: "MongoDB Overview",description: "MongoDB is no SQL database",by: "tutorials point", url: "http://www.tutorialspoint.com",tags: ["mongodb", "database", "NoSQL"],likes: 100}) 
+db.my_col.insertOne(
+ {
+    _id: ObjectId('659268e29cc01d8cd8717281'),
+    title: 'NoSQL Database',
+    description: "NoSQL database doesn't have tables",
+    by: 'tutotials point',
+    url: 'http://tutorialspoint.com',
+    tags: [ 'mongodbm', 'database', 'NoSQL' ],
+    likes: 20,
+    comments: [
+      {
+        user: 'user1',
+        message: 'My first comment',
+        dateCreated: ISODate('2013-12-09T21:05:00.000Z'),
+        likes: 0
+      }
+    ]
+  }
+);
