@@ -1,23 +1,22 @@
--- Q3. Create a pl-sql function which will accept the department number as input and it will return total salary for that department
+-- 04. Create insert,update, delete trigger on emp table, trigger will get fire when update operation is perform on salary column which will show salary diffences old and new values.
 
-DROP FUNCTION IF EXISTS SalSum;
+DROP TABLE IF EXISTS SalLog;
+
+CREATE TABLE SalLog (new_sal DECIMAL(8,2),old_sal DECIMAL(8,2), sal_diff DECIMAL(8,2));
+
+DROP TRIGGER IF EXISTS sal_logs;
 
 DELIMITER &&
 
-CREATE FUNCTION SalSum(id INT)
+CREATE TRIGGER sal_logs 
 
-RETURNS INT
-DETERMINISTIC
+BEFORE INSERT ON emp
 
+FOR EACH ROW
 BEGIN
-    DECLARE v_total_sal INT;
-    SELECT SUM(e.sal) INTO v_total_sal 
-    FROM emp e INNER JOIN dept d
-    ON e.deptno = d.deptno
-    WHERE d.dname = (SELECT dname FROM dept WHERE deptno = id);
-    return v_total_sal;
+    INSERT INTO SalLog VALUES(NEW.sal,OLD.sal,ABS(NEW.sal-OLD.sal));
 END;
 
 &&
 
-DELIMITER ; 
+DELIMITER ;
